@@ -17,7 +17,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   stage: prod
-  region: us-east-1
+  region: us-east-2
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.

@@ -1,0 +1,8 @@
+{
+  "body": "{\"handle\":\"testuser\",\"company\":\"testcomp\"}",
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
+    }
+  }
+}
