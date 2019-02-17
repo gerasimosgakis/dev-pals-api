@@ -27,18 +27,24 @@ export function main(event, context, callback) {
     // - 'createdAt': currentUnix timestamp
     // -
     Item: {
-      userId: event.requestContext.identity.cognitoIdentityId,
-      profileId: uuid.v1(),
-      handle: data.handle,
-      company: data.company,
-      website: data.website,
-      location: data.location,
-      status: data.status,
-      skills: data.skills,
+      userId: event.requestContext.identity.cognitoIdentityId ? event.requestContext.identity.cognitoIdentityId : '',
+      profileId: uuid.v1() ? uuid.v1(): '',
+      handle: data.handle ? data.handle : '',
+      company: data.company ? data.company : '',
+      website: data.website ? data.website : '',
+      location: data.location ? data.location : '',
+      status: data.status ? data.status : '',
+      skills: data.skills !== 'undefined' ? data.skills.split(',') : [],
       githubusername: data.githubusername,
       experience: data.experience,
       education: data.education,
-      social: data.social,
+      social: {
+        youtube: data.social.youtube ? data.social.youtube : '',
+        twitter: data.social.twitter ? data.social.twitter : '',
+        facebook: data.social.facebook ? data.social.facebook : '',
+        instagram: data.social.instagram ? data.social.instagram : '',
+        linkedin: data.social.linkedin ? data.social.linkedin : '',
+      },
       createdAt: Date.now()
     }
   };
