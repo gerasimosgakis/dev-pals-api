@@ -60,3 +60,15 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+
+  list:
+    # Defines an HTTP API endpoint that calls the main function in list-profiles.js
+    # - path: url path is /profiles
+    # - method: GET request
+    handler: list-profiles.main
+    events:
+      - http:
+          path: profiles
+          method: get
+          cors: true
+          authorizer: aws_iam
