@@ -49,6 +49,15 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  add-experience:
+    handler: add-experience.main
+    events:
+      - http:
+          path: experiences
+          method: post
+          cors: true
+          authorizer: aws_iam
+
   get:
     # Defines an HTTP API endpoint that calls the main function in get-profile.js
     # - path: url path is /profiles/{id}
