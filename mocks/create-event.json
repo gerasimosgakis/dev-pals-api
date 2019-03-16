@@ -1,5 +1,5 @@
 {
-  "body": "{\"handle\":\"testuser2\",\"company\":\"testcomp2\"}",
+  "body": "{\"handle\":\"ger\",\"company\":\"gak\"}",
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "USER-SUB-2234"
