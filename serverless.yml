@@ -72,3 +72,15 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+
+  delete:
+    # Defines an HTTP API endpoint that calls the main function in delete-profile.js
+    # - path: url path is /profile
+    # - method: DELETE request
+    handler: delete-profile.main
+    events:
+      - http:
+          path: profiles/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
