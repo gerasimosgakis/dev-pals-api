@@ -58,6 +58,15 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  add-education:
+    handler: add-education.main
+    events:
+      - http:
+          path: educations/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
   get:
     # Defines an HTTP API endpoint that calls the main function in get-profile.js
     # - path: url path is /profiles/{id}
