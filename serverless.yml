@@ -53,8 +53,8 @@ functions:
     handler: add-experience.main
     events:
       - http:
-          path: experiences
-          method: post
+          path: experiences/{id}
+          method: put
           cors: true
           authorizer: aws_iam
 

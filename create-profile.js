@@ -24,7 +24,7 @@ export async function main(event, context) {
     // - 'education': parsed from request body
     // - 'social': parsed from request body
     // - 'createdAt': currentUnix timestamp
-    // -
+
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       profileId: uuid.v1(),
@@ -35,8 +35,8 @@ export async function main(event, context) {
       status: data.status,
       skills: data.skills,
       githubusername: data.githubusername,
-      experience: data.experience,
-      education: data.education,
+      expData: data.expData,
+      eduData: data.education,
       linkedin: data.linkedin,
       facebook: data.facebook,
       youtube: data.youtube,
@@ -50,6 +50,7 @@ export async function main(event, context) {
     await dynamoDbLib.call("put", params);
     return success(params.Item);
   } catch (e) {
+    console.log(e);
     return failure({ status: false });
   }
 

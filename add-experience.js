@@ -7,7 +7,7 @@ export async function main(event, context) {
   const data = JSON.parse(event.body);
 
   const params = {
-    TableName: "experiences",
+    TableName: "profiles",
     // 'Item' contains the attributes of the item to be created
     // - 'userId': user identities are federated through the
     //             Cognito Identity Pool, we will use the identity id
@@ -25,21 +25,18 @@ export async function main(event, context) {
     // - 'social': parsed from request body
     // - 'createdAt': currentUnix timestamp
     // -
-    Item: {
-      userId: event.requestContext.identity.cognitoIdentityId,
-      experienceId: uuid.v1(),
-      company: data.company,
-      title: data.title,
-      location: data.location,
-      from: data.from,
-      to: data.to,
-      description: data.description,
-      createdAt: Date.now()
+    Key: {
+      userId: event.requestContext.identity.cognitoIdentityId
+    },
+    UpdateExpression: "SET expData = :expData",
+    ExpressionAttributeValues: {
+      ":expData": data.expData || null
     }
   };
 
   try {
-    await dynamoDbLib.call("put", params);
+    console.log(params);
+    await dynamoDbLib.call("update", params);
     return success(params.Item);
   } catch (e) {
     return failure({ status: false });
