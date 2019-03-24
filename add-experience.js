@@ -30,7 +30,7 @@ export async function main(event, context) {
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId
     },
-    UpdateExpression: "SET expData = list_append(expData, :expData)",
+    UpdateExpression: "SET expData = list_append(:expData, expData)",
     ExpressionAttributeValues: {
       ":expData": [data.expData]
     }
