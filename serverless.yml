@@ -76,6 +76,15 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  delete-education:
+    handler: delete-education.main
+    events:
+      - http:
+          path: delete-education/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
   get:
     # Defines an HTTP API endpoint that calls the main function in get-profile.js
     # - path: url path is /profiles/{id}

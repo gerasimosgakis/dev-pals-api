@@ -27,7 +27,7 @@ export async function main(event, context) {
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId
     },
-    UpdateExpression: `REMOVE expData[${data.index}]`
+    UpdateExpression: `REMOVE eduData[${data.index}]`
   };
 
   try {
