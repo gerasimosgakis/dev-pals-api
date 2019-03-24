@@ -67,6 +67,15 @@ functions:
           cors: true
           authorizer: aws_iam
 
+  delete-experience:
+    handler: delete-experience.main
+    events:
+      - http:
+          path: delete-experience/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
   get:
     # Defines an HTTP API endpoint that calls the main function in get-profile.js
     # - path: url path is /profiles/{id}

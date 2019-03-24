@@ -4,9 +4,8 @@ import { success, failure } from "./libs/response-lib";
 
 export async function main(event, context) {
   // Request body is passed in as a JSON encoded string in 'event.body'
-  const bodyWithId = JSON.parse(event.body);
-  bodyWithId.expData._id = uuid.v1();
-  const data = bodyWithId;
+  const data = JSON.parse(event.body);
+  console.log(data);
 
   const params = {
     TableName: "profiles",
@@ -30,17 +29,15 @@ export async function main(event, context) {
     Key: {
       userId: event.requestContext.identity.cognitoIdentityId
     },
-    UpdateExpression: "SET expData = list_append(expData, :expData)",
-    ExpressionAttributeValues: {
-      ":expData": [data.expData]
-    }
+    UpdateExpression: `REMOVE expData[${data.index}]`
   };
 
   try {
     console.log(params);
     await dynamoDbLib.call("update", params);
-    return success(params.Item);
+    return success(params);
   } catch (e) {
+    console.log(e);
     return failure({ status: false });
   }
 
