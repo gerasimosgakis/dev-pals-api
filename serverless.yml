@@ -85,7 +85,7 @@ functions:
           cors: true
           authorizer: aws_iam
 
-  get:
+  get-profile:
     # Defines an HTTP API endpoint that calls the main function in get-profile.js
     # - path: url path is /profiles/{id}
     # - method: GET request
@@ -93,6 +93,18 @@ functions:
     events:
       - http:
           path: profiles/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam
+
+  get-profile-by-handle:
+    # Defines an HTTP API endpoint that calls the main function in get-profile-by-handle.js
+    # - path: url path is /profiles/{id}
+    # - method: GET request
+    handler: get-profile-by-handle.main
+    events:
+      - http:
+          path: profiles-by-handle/{handle}
           method: get
           cors: true
           authorizer: aws_iam
