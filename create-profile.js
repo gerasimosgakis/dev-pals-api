@@ -28,6 +28,7 @@ export async function main(event, context) {
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       profileId: uuid.v1(),
+      name: data.name,
       handle: data.handle,
       avatar: data.avatar,
       company: data.company,
