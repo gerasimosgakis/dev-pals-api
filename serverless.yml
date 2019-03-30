@@ -132,3 +132,12 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
+  add-post:
+    handler: add-post.main
+    events:
+      - http:
+          path: posts
+          method: post
+          cors: true
+          authorizer: aws_iam

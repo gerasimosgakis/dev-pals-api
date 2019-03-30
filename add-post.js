@@ -7,45 +7,36 @@ export async function main(event, context) {
   const data = JSON.parse(event.body);
 
   const params = {
-    TableName: "profiles",
-    // 'Item' contains the attributes of the item to be created
-    // - 'userId': user identities are federated through the
-    //             Cognito Identity Pool, we will use the identity id
-    //             as the user id of the authenticated user
-    // - 'profileId': a unique id
-    // - 'handle': parsed from request body
-    // - 'company': parsed from request body
-    // - 'website': parsed from request body
-    // - 'location': parsed from request body
-    // - 'status': parsed from request body
-    // - 'skills': parsed from request body
-    // - 'githubusername': parsed from request body
-    // - 'experience': parsed from request body
-    // - 'education': parsed from request body
-    // - 'social': parsed from request body
-    // - 'createdAt': currentUnix timestamp
-
+    TableName: "posts",
     Item: {
+      // userId: event.requestContext.identity.cognitoIdentityId,
+      // profileId: uuid.v1(),
+      // name: data.name,
+      // handle: data.handle,
+      // avatar: data.avatar,
+      // company: data.company,
+      // website: data.website,
+      // location: data.location,
+      // status: data.status,
+      // skills: data.skills,
+      // bio: data.bio,
+      // githubusername: data.githubusername,
+      // expData: data.expData || [],
+      // eduData: data.education || [],
+      // linkedin: data.linkedin,
+      // facebook: data.facebook,
+      // youtube: data.youtube,
+      // instagram: data.instagram,
+      // twitter: data.twitter,
+      // createdAt: Date.now()
       userId: event.requestContext.identity.cognitoIdentityId,
-      profileId: uuid.v1(),
+      postId: uuid.v1(),
       name: data.name,
-      handle: data.handle,
       avatar: data.avatar,
-      company: data.company,
-      website: data.website,
-      location: data.location,
-      status: data.status,
-      skills: data.skills,
-      bio: data.bio,
-      githubusername: data.githubusername,
-      expData: data.expData || [],
-      eduData: data.education || [],
-      linkedin: data.linkedin,
-      facebook: data.facebook,
-      youtube: data.youtube,
-      instagram: data.instagram,
-      twitter: data.twitter,
-      createdAt: Date.now()
+      text: data.text,
+      likes: [],
+      comments: [],
+      createdAt: Date.now
     }
   };
 
